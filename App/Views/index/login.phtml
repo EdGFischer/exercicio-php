@@ -1,0 +1,32 @@
+<?php
+require_once 'navbar_index.phtml'
+?>
+
+<div class="index-body d-flex flex-column align-items-center justify-content-center">
+    <div class="card card-login" style="width: 20rem">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-3">Área do Usuário</h5>
+            <form class="m-0" method="POST" action="/authenticate">
+                <div class="mb-2">
+                    <label class="form-label">E-mail</label>
+                    <input class="form-control" type="mail" name="mail" placeholder="E-mail">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Senha</label>
+                    <input class="form-control" type="password" name="password" placeholder="Senha">
+                </div>
+                <?php
+                if ($this->view->login == 'error') { ?>
+                    <div class="col-12 mt-1">
+                        <div class="w-100 bg-danger rounded p-1 text-center bg-gradient fw-bold">
+                            <span>E-mail ou senhas inválido(s)</span>
+                        </div>
+                    </div>
+                <?php } ?>
+                <div class="mt-4 d-flex flex-column justify-content-center align-items-center">
+                    <button type="sumit" class="btn btn-login w-100">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

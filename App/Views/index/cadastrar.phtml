@@ -1,0 +1,68 @@
+<?php
+require_once 'navbar_index.phtml'
+?>
+
+<div class="index-body">
+    <div class="container-xxl border w-100 h-100" id="cadastrar">
+
+        <h2 class="text-center text-uppercase my-3">Cadastre-se</h2>
+
+        <form class="row g-3" id="form-register-user" method="POST" action="/register_user">
+
+            <?php if ($this->view->registerReturn == "RegisteredSuccessfully") { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-success rounded p-1 text-center bg-gradient fw-bold"><span>Usuário cadastrado com sucesso</span></div>
+                </div>
+            <?php } ?>
+
+            <?php if ($this->view->registerReturn == "userAlreadyRegistered") { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-danger rounded p-1 text-center bg-gradient fw-bold"><span>E-mail já cadastrado</span></div>
+                </div>
+            <?php } ?>
+
+            <div class="col-md-12">
+                <label for="name" class="form-label">Nome Completo</label>
+                <input required type="text" class="form-control" name="name" id="name">
+            </div>
+
+            <div class="col-md-6">
+                <label for="password" class="form-label">Senha</label>
+                <input required type="password" class="form-control" name="password" id="password">
+            </div>
+
+            <div class="col-md-6">
+                <label for="passwordCheck" class="form-label">Repetir Senha</label>
+                <input required type="password" class="form-control" name="passwordCheck" id="passwordCheck">
+            </div>
+
+            <?php if ($this->view->registerReturn == 'diferentPasswords') { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-danger rounded p-1 text-center bg-gradient fw-bold"><span>Senhas estão diferentes</span></div>
+                </div>
+            <?php } ?>
+
+            <div class="col-12">
+                <label for="email" class="form-label">E-mail</label>
+                <input required type="text" class="form-control" name="mail" id="email">
+            </div>
+
+            <div class="col-12">
+                <label for="emailCheck" class="form-label">Repetir E-mail</label>
+                <input required type="text" class="form-control" name="mailCheck" id="emailCheck">
+            </div>
+
+            <?php if ($this->view->registerReturn == "diferentMails") { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-danger rounded p-1 text-center bg-gradient fw-bold"><span>E-mails estão diferentes</span></div>
+                </div>
+            <?php } ?>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-success w-25">Cadastrar</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

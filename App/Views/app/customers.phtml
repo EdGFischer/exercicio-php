@@ -1,0 +1,48 @@
+<section class="wv-100 vh-100 bgFifth">
+    <?php
+    require_once 'navbar.phtml';
+    ?>
+    <div class="col-12">
+        <div class="p-3 textFourth">
+            <a href="/customersRegister" class="btn btn-success">
+                <i class="fa-solid fa-plus"></i> Cadastrar
+            </a>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-wrap">
+        <div class="p-3 col-12 col-md-6">
+            <div class="p-2 shadow rounded bgSecond textFourth">
+                <h4 class="m-0 mb-2 fw-bold text-center">Listagem de Times:</h4>
+                <div class="list-group rounded-0">
+                    <div href="#" class="list-group-item list-group-item-action bg-transparent border-0 border-bottom border-dark" aria-current="true">
+                        <div class="d-flex">
+                            <div class="col-2">
+                                <img> logo
+                            </div>
+                            <div class="col-7">
+                                Nome da Equipe
+                            </div>
+                            <div class="col-3 icons_customers d-flex justify-content-evenly">
+                                <a href="/customers_view" class="btn btn-info text-dark" id="button_view">
+                                    <i class="fa-solid fa-users-viewfinder "></i>
+                                </a>
+                                <a href="/customers_edit" class="btn btn-warning text-dark" id="button_edit">
+                                    <i class="fa-solid fa-pen-to-square "></i>
+                                </a>
+                                <button type="button" class="btn btn-danger text-dark" id="button_delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="/js/customers.js"></script>

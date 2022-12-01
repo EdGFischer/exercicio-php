@@ -1,0 +1,191 @@
+/*GLOBAL*/
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-first: #ebebf1;
+    --color-second: #e9e8ee;
+    --color-third: #c2c1ca;
+    --color-fourth: #49555f;
+    --color-fifth: #393a46;
+}
+
+@font-face {
+    font-family: 'LiberationMono-Regular';
+    src: url('../fonts/LiberationMono-Regular.ttf') format('truetype');
+  }
+
+/* Geral */
+body {
+    background-color: var(--color-first);
+    color: var(--color-fifth);
+    font-family: 'LiberationMono-Regular', Arial, sans-serif;
+}
+
+.bgFirst {
+    background-color: var(--color-first);
+}
+
+.bgSecond {
+    background-color: var(--color-second);
+}
+
+.bgThird {
+    background-color: var(--color-third);
+}
+
+.bgFourth {
+    background-color: var(--color-fourth);
+}
+
+.bgFifth {
+    background-color: var(--color-fifth);
+}
+
+.textFirst {
+    color: var(--color-first);
+}
+
+.textSecond {
+    color: var(--color-second);
+}
+
+.textThird {
+    color: var(--color-third);
+}
+
+.textFourth {
+    color: var(--color-fourth);
+}
+
+.textFifth {
+    color: var(--color-fifth);
+}
+
+.hv-100 {
+    min-height: 100vh;
+}
+
+/* VIEW INDEX */
+nav.navIndex a.nav-link:hover,
+nav.navIndex a.nav-link:active,
+nav.navIndex a.nav-link:focus {
+    color: var(--color-second);
+}
+
+
+/* Nav-Bar Index */
+nav {
+    border-bottom: 1px solid var(--color-fourth);
+    font-size: 0.8em;
+}
+
+.navIndex {
+    background-color: var(--color-fourth);
+}
+
+nav.navIndex a.nav-link {
+    color: var(--color-first);
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: var(--color-fourth);
+    border: 0px;
+}
+
+/* Index*/
+.index-body {
+    height: 100%;
+    background-color: rgb(208, 216, 217, 0.7);
+}
+
+.index-body .tab-content {
+    height: 100%;
+}
+
+/* Card Login*/
+.card-login {
+    background-color: var(--color-fourth);
+    box-shadow: -3px 3px 5px -1px var(--color-second);
+    color: var(--color-second);
+}
+
+.card-body p {
+    font-size: 0.8em;
+}
+
+.btn-login {
+    background-color: var(--color-second);
+    font-weight: 500;
+}
+
+.btn-login:hover {
+    background-color: var(--color-third);
+    color: var(--color-fifth);
+    font-weight: 500;
+}
+
+/* Cadastro */
+#form-register-user label {
+    font-weight: 500;
+}
+
+
+
+/* VIEW APP */
+
+/* Navbar-side */
+nav.navIndexUser a.nav-link-index {
+    color: var(--color-first);
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: var(--color-fourth);
+    border: 0px;
+}
+
+nav.navIndexUser a.nav-link-index:hover,
+nav.navIndexUser a.nav-link-index:active,
+nav.navIndexUser a.nav-link-index:focus {
+    color: var(--color-second);
+}
+
+.navbar-side {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.navbar-side a {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+}
+
+.div-icon-navbar {
+    width: 30px;
+}
+
+/* Home - Dashboard*/
+.dashboard {
+    border-radius: 7px;
+    box-shadow: -3px 3px 5px -1px var(--color-fifth);
+    height: 100vh;
+}
+
+.topTittleAccounts {
+    background-color: var(--color-fourth);
+    color: var(--color-first);
+}
+
+.bodyAccountsName {
+    color: var(--color-fifth);
+    padding: 5px;
+}
+
+.bodyAccountsValue {
+    color: var(--color-fifth);
+    padding: 5px;
+}
+
+.AccountsFoooter {
+    background-color: var(--color-third);
+}
