@@ -1,0 +1,60 @@
+<section class="hv-100 wv-100 bgFifth">
+    <?php
+    require_once 'navbar.phtml';
+    ?>
+
+    <div class="container-fluid p-3 d-flex justify-content-center align-items-center">
+        <div class="bgFirst col-10 p-2 rounded shadow">
+            <div class="col-12">
+                <h5 class="text-center fw-bold m-0 my-3">
+                    Editar o Cliente
+                </h5>
+            </div>
+            <?php
+            $customer = $this->view->custormerReturn[0];
+            ?>
+            <form class="col-12 d-flex flex-wrap" method="POST" action="/customerRegistration">
+                <div class="d-none">
+                    <input type="text" class="form-control" id="id" name="id" value="<?= $customer['id'] ?>" required>
+                </div>
+                <div class="mb-3 px-2 col-12">
+                    <label for="name" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="<?= $customer['name'] ?>" required>
+                </div>
+
+                <div class="mb-3 px-2 col-3">
+                    <label for="birth_date" class="form-label">Data de Nascimento:</label>
+                    <input type="date" class="form-control" id="birth_date" name="birth_date" value="<?= $customer['birth_date'] ?>" required>
+                </div>
+
+                <div class="mb-3 px-2 col-9">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?= $customer['email'] ?>" required>
+                </div>
+
+                <div class="mb-3 px-2 col-6">
+                    <label for="cpf" class="form-label">CPF:</label>
+                    <input type="text" class="form-control cpfMask" id="cpf" name="cpf" value="<?= $customer['cpf'] ?>">
+                </div>
+
+                <div class="mb-3 px-2 col-6">
+                    <label for="phone" class="form-label">Telefone:</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="<?= $customer['phone'] ?>">
+                </div>
+
+
+                <div class="col-12 px-2 d-flex aling-content-center justify-content-end">
+                    <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#cancel_registration">
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="btn btn-success">Cadastrar Cliente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+<script src="/js/functions.js"></script>
+<script src="/js/customers.js"></script>

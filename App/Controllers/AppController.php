@@ -25,7 +25,6 @@ class appController extends Action
 		$this->view->allCustomers = $customer->allCustomers();
 
 		$this->render('customers', 'layout');
-
 	}
 
 	public function customersRegister()
@@ -37,13 +36,16 @@ class appController extends Action
 		$this->render('customersRegister', 'layout');
 	}
 
-	public function customersView()
+	public function customersEdit()
 	{
 		$this->validateAuthentication();
 
-		$this->view->registerReturn = '';
+		$customer = Container::getModel('Customer');
+		$customer->__set('id', $_GET['id']);
+		
+		$this->view->custormerReturn = $customer->specificCustomer();
 
-		$this->render('customersView', 'layout');
+		$this->render('customersEdit', 'layout');
 	}
 
 	public function customerRegistration()
@@ -63,10 +65,9 @@ class appController extends Action
 			$customer->customerRegistration();
 
 			$this->view->registerReturn = 'RegisteredSuccessfully';
-			
+
 			$this->render('/customersRegister', 'layout');
-			
-			
+
 		} else {
 
 			$this->view->registerReturn = 'repeatedCPF';

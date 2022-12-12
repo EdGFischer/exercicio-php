@@ -21,13 +21,13 @@
                         <div href="#" class="list-group-item list-group-item-action bg-transparent border-0 border-bottom border-dark" aria-current="true">
                             <div class="d-flex">
                                 <div class="col-9 col-md-10">
-                                    <?= $customer['name'] ?> (<span id="cpfMask">CPF: <?= $customer['cpf'] ?></span>)
+                                    <?= $customer['name'] ?> (<span class="cpfMask">CPF: <?= $customer['cpf'] ?></span>)
                                 </div>
                                 <div class="col-3 col-md-2 icons_customers d-flex justify-content-evenly">
-                                    <a href="/customersView" class="btn btn-info text-dark" id="button_view">
+                                    <a href="/" class="btn btn-info text-dark" >
                                         <i class="fa-solid fa-users-viewfinder "></i>
                                     </a>
-                                    <a href="/customers_edit" class="btn btn-warning text-dark" id="button_edit">
+                                    <a href="/customersEdit?id=<?= $customer['id'] ?>" class="btn btn-warning text-dark" id="button_edit" id="button_view">
                                         <i class="fa-solid fa-pen-to-square "></i>
                                     </a>
                                     <button type="button" class="btn btn-danger text-dark" id="button_delete">
