@@ -10,7 +10,17 @@
                     Registre um novo Cliente
                 </h5>
             </div>
-            <form class="col-12 d-flex flex-wrap" method="POST" action="/customerRegistration" >
+            <?php if ($this->view->registerReturn == "RegisteredSuccessfully") { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-success text-white rounded p-1 text-center bg-gradient fw-bold"><span>Cliente cadastrado com sucesso</span></div>
+                </div>
+            <?php } ?>
+            <?php if ($this->view->registerReturn == "repeatedCPF") { ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-danger rounded p-1 text-white text-center bg-gradient fw-bold"><span>CPF já cadastrado</span></div>
+                </div>
+            <?php } ?>
+            <form class="col-12 d-flex flex-wrap" method="POST" action="/customerRegistration">
                 <div class="mb-3 px-2 col-12">
                     <label for="name" class="form-label">Nome:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -28,7 +38,7 @@
 
                 <div class="mb-3 px-2 col-6">
                     <label for="cpf" class="form-label">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf"  required>
+                    <input type="text" class="form-control" id="cpf" name="cpf" required>
                 </div>
 
                 <div class="mb-3 px-2 col-6">

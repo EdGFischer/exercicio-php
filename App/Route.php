@@ -78,6 +78,12 @@ class Route extends Bootstrap
 			'action' => 'customerRegistration'
 		);
 
+		$routes['customersView'] = array(
+			'route' => '/customersView',
+			'controller' => 'AppController',
+			'action' => 'customersView'
+		);
+
 		
 
 		$this->setRoutes($routes);
