@@ -84,6 +84,12 @@ class Route extends Bootstrap
 			'action' => 'customersEdit'
 		);
 
+		$routes['actionCustomersEdit'] = array(
+			'route' => '/actionCustomersEdit',
+			'controller' => 'AppController',
+			'action' => 'actionCustomersEdit'
+		);
+
 		
 
 		$this->setRoutes($routes);

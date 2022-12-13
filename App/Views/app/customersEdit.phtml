@@ -11,11 +11,25 @@
                 </h5>
             </div>
             <?php
+            if ($this->view->registerReturn == "EditedSuccessfully") {
+            ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-success text-white rounded p-1 text-center bg-gradient fw-bold"><span>Cliente editado com sucesso</span></div>
+                </div>
+            <?php
+            }
+            if ($this->view->registerReturn == "repeatedCPF") {
+            ?>
+                <div class="col-12 mt-1">
+                    <div class="w-100 bg-danger rounded p-1 text-white text-center bg-gradient fw-bold"><span>CPF modificado já está cadastrado</span></div>
+                </div>
+            <?php
+            }
             $customer = $this->view->custormerReturn[0];
             ?>
-            <form class="col-12 d-flex flex-wrap" method="POST" action="/customerRegistration">
+            <form class="col-12 d-flex flex-wrap" method="POST" action="/actionCustomersEdit">
                 <div class="d-none">
-                    <input type="text" class="form-control" id="id" name="id" value="<?= $customer['id'] ?>" required>
+                    <input type="text" class="form-control" id="id" name="id" value="<?= $customer['id'] ?>">
                 </div>
                 <div class="mb-3 px-2 col-12">
                     <label for="name" class="form-label">Nome:</label>
@@ -48,9 +62,24 @@
                         Cancelar
                     </button>
 
-                    <button type="submit" class="btn btn-success">Cadastrar Cliente</button>
+                    <button type="submit" class="btn btn-success">Editar Cliente</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cancel_registration" tabindex="-1" aria-labelledby="cancel_registrationLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bgFifth">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-white" id="cancel_registrationLabel">Deseja cancelar a edição?</h1>
+                    <button type="button" class="btn-close bgFirst" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="/customers" class="btn btn-danger">Cancelar Edição</a>
+                </div>
+            </div>
         </div>
     </div>
 

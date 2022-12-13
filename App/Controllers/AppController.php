@@ -40,9 +40,11 @@ class appController extends Action
 	{
 		$this->validateAuthentication();
 
+		$this->view->registerReturn = '';
+
 		$customer = Container::getModel('Customer');
 		$customer->__set('id', $_GET['id']);
-		
+
 		$this->view->custormerReturn = $customer->specificCustomer();
 
 		$this->render('customersEdit', 'layout');
@@ -67,12 +69,42 @@ class appController extends Action
 			$this->view->registerReturn = 'RegisteredSuccessfully';
 
 			$this->render('/customersRegister', 'layout');
-
 		} else {
 
 			$this->view->registerReturn = 'repeatedCPF';
 
 			$this->render('/customersRegister', 'layout');
+		}
+	}
+
+	public function actionCustomersEdit()
+	{
+		$this->validateAuthentication();
+
+		$customer = Container::getModel('Customer');
+
+		$customer->__set('id', $_POST['id']);
+		$customer->__set('name', $_POST['name']);
+		$customer->__set('birth_date', $_POST['birth_date']);
+		$customer->__set('cpf', $_POST['cpf']);
+		$customer->__set('phone', $_POST['phone']);
+		$customer->__set('email', $_POST['email']);
+
+		if (count($customer->conferenceCPF()) == 0) {
+
+			$customer->EditCustomer();
+
+			$this->view->custormerReturn = $customer->specificCustomer();
+			$this->view->registerReturn = 'EditedSuccessfully';
+
+			$this->render('/customersEdit', 'layout');
+		} else {
+
+			$this->view->custormerReturn = $customer->specificCustomer();
+
+			$this->view->registerReturn = 'repeatedCPF';
+
+			$this->render('/customersEdit', 'layout');
 		}
 	}
 
