@@ -13,37 +13,106 @@
         <div class="p-3 col-12">
             <div class="p-2 shadow rounded bgSecond textFourth">
                 <h4 class="m-0 mb-2 fw-bold text-center">Listagem de Clientes:</h4>
-
                 <?php
-                foreach ($this->view->allCustomers as $key => $customer) {
+                if ($this->view->deleteReturn == "DeleteSuccessfully") {
                 ?>
-                    <div class="list-group rounded-0">
-                        <div href="#" class="list-group-item list-group-item-action bg-transparent border-0 border-bottom border-dark" aria-current="true">
-                            <div class="d-flex">
-                                <div class="col-9 col-md-10">
-                                    <?= $customer['name'] ?> (<span class="cpfMask">CPF: <?= $customer['cpf'] ?></span>)
-                                </div>
-                                <div class="col-3 col-md-2 icons_customers d-flex justify-content-evenly">
-                                    <a href="/" class="btn btn-info text-dark" >
-                                        <i class="fa-solid fa-users-viewfinder "></i>
-                                    </a>
-                                    <a href="/customersEdit?id=<?= $customer['id'] ?>" class="btn btn-warning text-dark" id="button_edit" id="button_view">
-                                        <i class="fa-solid fa-pen-to-square "></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger text-dark" id="button_delete">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </div>
 
-                            </div>
+                    <div class="col-12 mt-1">
+                        <div class="w-100 bg-danger text-white rounded p-1 text-center bg-gradient fw-bold">
+                            <span>Cliente excluido com sucesso</span>
                         </div>
 
                     </div>
+
                 <?php
+                }
+                if (count($this->view->allCustomers) == 0) {
+                ?>
+
+                    <div class="list-group rounded-0">
+                        <div href="#" class="fst-italic text-center list-group-item list-group-item-action bg-transparent border-0 border-bottom border-dark" aria-current="true">
+                            Nenhum cliente cadastrado até o momento
+                        </div>
+
+                    </div>
+
+                    <?php
+                } else {
+
+                    foreach ($this->view->allCustomers as $key => $customer) {
+                    ?>
+                        <div class="list-group rounded-0">
+                            <div href="#" class="list-group-item list-group-item-action bg-transparent border-0 border-bottom border-dark" aria-current="true">
+                                <div class="d-flex">
+                                    <div class="col-9 col-md-10">
+                                        <?= $customer['name'] ?> (<span class="cpfMask">CPF: <?= $customer['cpf'] ?></span>)
+                                    </div>
+                                    <div class="col-3 col-md-2 icons_customers d-flex justify-content-evenly">
+                                        <button type="button" class="btn btn-info text-dark" data-bs-toggle="modal" data-bs-target="#button_view_<?= $customer['id'] ?>">
+                                            <i class="fa-solid fa-users-viewfinder "></i>
+                                        </button>
+                                        <a href="/customersEdit?id=<?= $customer['id'] ?>" class="btn btn-warning text-dark" id="button_edit" id="button_view">
+                                            <i class="fa-solid fa-pen-to-square "></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger text-dark" data-bs-toggle="modal" data-bs-target="#button_delete_<?= $customer['id'] ?>">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modal View-->
+                        <div class="modal fade" id="button_view_<?= $customer['id'] ?>" tabindex="-1" aria-labelledby="button_view_Label_<?= $customer['id'] ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content bgThird">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 text-dark overflow-hidden" id="button_view_Label_<?= $customer['id'] ?>">Dados do cliente <?= $customer['name'] ?></h1>
+                                        <button type="button" class="btn-close btn-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-dark">
+                                        Nome: <?= $customer['name'] ?>
+                                        </br>
+                                        Data de nascimento: <?= date("d/m/Y", strtotime($customer['birth_date'])) ?>
+                                        </br>
+                                        E-mail: <?= $customer['email'] ?>
+                                        </br>
+                                        CPF: <span class="cpfMask"><?= $customer['cpf'] ?></span>
+                                        </br>
+                                        Telefone:  <?= $customer['phone'] ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Delete -->
+                        <div class="modal fade" id="button_delete_<?= $customer['id'] ?>" tabindex="-1" aria-labelledby="button_deleteLabel_<?= $customer['id'] ?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content bgFifth">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 text-white overflow-hidden" id="button_deleteLabel_<?= $customer['id'] ?>">Deseja excluir o cliente <?= $customer['name'] ?>?</h1>
+                                        <button type="button" class="btn-close bgFirst" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <a href="/deleteCustomer?id=<?= $customer['id'] ?>" class="btn btn-danger">Sim, excluir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <?php
+                    }
                 }
                 ?>
             </div>
         </div>
+
 
 </section>
 

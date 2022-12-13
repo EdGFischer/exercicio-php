@@ -20,6 +20,7 @@ class appController extends Action
 	{
 		$this->validateAuthentication();
 
+		$this->view->deleteReturn = '';
 		$customer = Container::getModel('Customer');
 
 		$this->view->allCustomers = $customer->allCustomers();
@@ -92,7 +93,7 @@ class appController extends Action
 
 		if (count($customer->conferenceCPF()) == 0) {
 
-			$customer->EditCustomer();
+			$customer->editCustomer();
 
 			$this->view->custormerReturn = $customer->specificCustomer();
 			$this->view->registerReturn = 'EditedSuccessfully';
@@ -106,6 +107,22 @@ class appController extends Action
 
 			$this->render('/customersEdit', 'layout');
 		}
+	}
+
+	public function deleteCustomer()
+	{
+		$this->validateAuthentication();
+
+		$customer = Container::getModel('Customer');
+
+		$customer->__set('id', $_GET['id']);
+
+		$customer->deleteCustomer();
+
+		$this->view->deleteReturn = 'DeleteSuccessfully';
+		$this->view->allCustomers = $customer->allCustomers();
+		
+		$this->render('/customers', 'layout');
 	}
 
 	public function validateAuthentication()

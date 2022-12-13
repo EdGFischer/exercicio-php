@@ -58,19 +58,28 @@ class Customer extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function EditCustomer()
+    public function editCustomer()
     {
         $query = "UPDATE customers SET name = :name, birth_date = :birth_date, cpf = :cpf, phone = :phone, email = :email WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':name', $this->__get('name'));
         $stmt->bindValue(':birth_date', $this->__get('birth_date'));
-        $stmt->bindValue(':cpf', str_replace('-','',str_replace('.','',$this->__get('cpf'))));
+        $stmt->bindValue(':cpf', str_replace('-', '', str_replace('.', '', $this->__get('cpf'))));
         $stmt->bindValue(':phone', $this->__get('phone'));
         $stmt->bindValue(':email', $this->__get('email'));
         $stmt->bindValue(':id', $this->__get('id'));
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function deleteCustomer()
+    {
+        $query = "DELETE FROM customers WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id', $this->__get('id'));
+        $stmt->execute();
+
     }
 
 
