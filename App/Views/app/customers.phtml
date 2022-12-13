@@ -72,16 +72,16 @@
                                         <h1 class="modal-title fs-5 text-dark overflow-hidden" id="button_view_Label_<?= $customer['id'] ?>">Dados do cliente <?= $customer['name'] ?></h1>
                                         <button type="button" class="btn-close btn-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body text-dark">
-                                        Nome: <?= $customer['name'] ?>
+                                    <div class="modal-body text-dark overflow-hidden">
+                                        <span class="fw-bold">Nome:</span> <?= $customer['name'] ?>
                                         </br>
-                                        Data de nascimento: <?= date("d/m/Y", strtotime($customer['birth_date'])) ?>
+                                        <span class="fw-bold">Data de nascimento:</span> <?= date("d/m/Y", strtotime($customer['birth_date'])) ?>
                                         </br>
-                                        E-mail: <?= $customer['email'] ?>
+                                        <span class="fw-bold">E-mail:</span> <?= $customer['email'] ?>
                                         </br>
-                                        CPF: <span class="cpfMask"><?= $customer['cpf'] ?></span>
+                                        <span class="fw-bold">CPF:</span> <span class="cpfMask"><?= $customer['cpf'] ?></span>
                                         </br>
-                                        Telefone:  <?= $customer['phone'] ?>
+                                        <span class="fw-bold">Telefone:</span> <?= $customer['phone'] ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
